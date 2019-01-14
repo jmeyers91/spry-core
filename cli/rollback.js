@@ -1,10 +1,9 @@
-const start = require('../lib/index');
 
-module.exports = function rollback(root, args) {
-  return start(root, {
+module.exports = function rollback(App, root, args) {
+  return new App(root, {
     ...args,
     runMigrateRollback: true,
     webserverDisabled: true,
     shortLived: true,
-  });
+  }).start();
 }

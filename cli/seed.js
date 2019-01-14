@@ -1,10 +1,9 @@
-const start = require('../lib/index');
 
-module.exports = function seed(root, args) {
-  return start(root, {
+module.exports = function seed(App, root, args) {
+  return new App(root, {
     ...args,
     runSeeds: true,
     webserverDisabled: true,
     shortLived: true,
-  });
+  }).start();
 }

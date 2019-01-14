@@ -1,5 +1,7 @@
 
 module.exports = ({ knex }) => ({
+  name: 'create_{{{ snakeCase name }}}_table',
+
   async up() {
     if (await knex.schema.hasTable('{{snakeCase name}}')) return;
     return knex.schema.createTable('{{snakeCase name}}', table => {

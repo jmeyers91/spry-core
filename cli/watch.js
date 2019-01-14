@@ -1,42 +1,37 @@
-const path = require('path');
 const chokidar = require('chokidar');
-const start = require('../lib/index');
 
-module.exports = async function watch(root, args) {
+module.exports = async function watch(App, root, args) {
   const watcher = chokidar.watch(root);
-  let appInstance = await restart();
+  let app;
+
+  await start();
 
   watcher
     .on('raw', async (_, path) => {
-      const inCache = require.cache[path];
-      if(inCache) {
-        delete require.cache[path];
-      }
-      appInstance && appInstance.log('Restarting');
-      appInstance = await restart(appInstance);
+      if(require.cache[path]) delete require.cache[path];
+      start();
     });
 
-  const { repl=true } = args;
-  if(repl) startRELP();
-
-  async function destroy(instance) {
-    if(instance) {
+  async function start() {
+    if(app) {
       try {
-        await instance.destroy();
+        await app.destroy();
       } catch(error) {
-        console.log('Failed to destroy', error.stack);
+        console.log('Failed to destroy app', error.stack);
       }
+      app = null;
+    }
+
+    app = new App(root, args);
+    try {
+      await app.start();
+    } catch(error) {
+      console.log(`Failed to start app`, error.stack);
     }
   }
 
-  async function restart(lastInstance) {    
-    await destroy(lastInstance);
-    try {
-      return await start(root, args);
-    } catch(error) {
-      console.log('Failed to start', error.stack);
-    }
-  }
+  // const { repl=true } = args;
+  // if(repl) startRELP();
 
   function startRELP() {
     require('repl')
