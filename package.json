@@ -1,13 +1,14 @@
 {
   "name": "@simplej/spry-core",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/index.js",
   "author": "James Meyers",
   "license": "MIT",
   "homepage": "https://github.com/jmeyers91/spry-core#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npm publish --access=public"
   },
   "repository": {
     "type": "git",
