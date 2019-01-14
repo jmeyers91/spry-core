@@ -1,0 +1,24 @@
+
+module.exports = ({ Model }) => (
+  class {{{ classNameCase name }}} extends Model {
+    static get tableName() {
+      return '{{{ snakeCase name }}}'
+    }
+
+    static get jsonSchema() {
+      return {
+        type: 'object',
+        required: [],
+        properties: {
+
+        },
+      };
+    }
+
+    static get relationMappings() {
+      return {
+
+      };
+    }
+  }
+);
