@@ -1,25 +1,13 @@
 {
   "name": "@simplej/spry-core",
-  "version": "0.0.3",
-  "description": "",
+  "version": "0.0.4",
   "main": "lib/index.js",
-  "author": "James Meyers",
-  "license": "MIT",
-  "homepage": "https://github.com/jmeyers91/spry-core#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "publish": "npm publish --access=public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jmeyers91/spry-core.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jmeyers91/spry-core/issues"
-  },
   "dependencies": {
     "@koa/cors": "^2.2.3",
-    "globby": "^8.0.1",
     "http-shutdown": "^1.2.0",
     "knex": "^0.16.3",
     "koa": "^2.6.2",
@@ -32,5 +20,17 @@
   "devDependencies": {
     "pg": "^7.8.0",
     "sqlite3": "^4.0.6"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "James Meyers",
+  "license": "MIT",
+  "homepage": "https://github.com/jmeyers91/spry-core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmeyers91/spry-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmeyers91/spry-core/issues"
   }
 }
